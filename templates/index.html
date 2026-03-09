@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Prediction</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c7744);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:white;
+}
+
+.card{
+background:white;
+color:black;
+padding:35px;
+border-radius:15px;
+width:450px;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#2e7d32;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1b5e20;
+}
+
+.result{
+text-align:center;
+margin-top:20px;
+font-size:18px;
+font-weight:bold;
+color:#2e7d32;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>Car Insurance Eligibility</h2>
+
+<form action="/predict" method="post">
+
+<input type="number" name="age" placeholder="Age" required>
+
+<input type="number" name="credit" placeholder="Credit Score" required>
+
+<input type="number" name="mileage" placeholder="Annual Mileage" required>
+
+<select name="ownership">
+<option value="1">Vehicle Ownership - Yes</option>
+<option value="0">Vehicle Ownership - No</option>
+</select>
+
+<input type="number" name="year" placeholder="Vehicle Year" required>
+
+<input type="number" name="violations" placeholder="Speeding Violations" required>
+
+<button type="submit">Predict</button>
+
+</form>
+
+{% if prediction_result %}
+
+<div class="result">
+{{ prediction_result }}
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
